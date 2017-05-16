@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.security.mySecurity.domain.Login;
 import com.security.mySecurity.domain.Profile;
+import com.security.mySecurity.exceptions.ProfileNotFoundException;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
@@ -45,6 +46,6 @@ public class ProfileService {
         return profiles.stream()
             .filter( profile -> profile.getLogin().getUsername().equals(username) )
             .findFirst()
-            .get();
+            .orElseThrow(() -> new ProfileNotFoundException(username));
     }
 }

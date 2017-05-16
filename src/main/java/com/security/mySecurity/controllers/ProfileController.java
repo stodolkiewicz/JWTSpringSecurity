@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
-/**
- * Created by Admin on 15/05/2017.
- */
 @RestController("myProfileControllerBecauseOfConflictingBeanNames")
 @RequestMapping(path = "/profile")
 class ProfileController {
