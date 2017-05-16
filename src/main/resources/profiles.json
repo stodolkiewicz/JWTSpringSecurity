@@ -1,0 +1,15 @@
+[
+    {
+        "firstName": "James",
+        "lastName": "Bond",
+        "email": "jamesB@gmail.com",
+        "login": {
+            "username": "jamesbond",
+            "password": "jamesbond",
+            "salt": "V5xi38lN",
+            "md5": "cba0d5fb77ae3e0dbe177b9624df5ceb",
+            "sha1": "5f22fdcc79affdef604d89b64b7db599ed454c5e",
+            "sha256": "23afb0983e874169669f96cd72b69234aef4cf54a86f89a25e14e91941ac95a2"
+        }
+    }
+]
