@@ -42,9 +42,10 @@ public class ProfileService {
         profiles.add(profile);
     }
 
-    public Profile getProfile(String username) {
+    public Profile getProfile(String username, String password) {
         return profiles.stream()
             .filter( profile -> profile.getLogin().getUsername().equals(username) )
+            .filter( profile -> profile.getLogin().getPassword().equals(password))
             .findFirst()
             .orElseThrow(() -> new ProfileNotFoundException(username));
     }

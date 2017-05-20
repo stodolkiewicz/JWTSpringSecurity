@@ -4,10 +4,7 @@ import com.security.mySecurity.domain.Profile;
 import com.security.mySecurity.services.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -20,8 +17,8 @@ class ProfileController {
     private ProfileService profileService;
 
     @RequestMapping(path = "/{username}", method = RequestMethod.GET)
-    public Profile getProfile(@PathVariable String username){
-        return profileService.getProfile(username);
+    public Profile getProfile(@PathVariable String username, @RequestParam String password){
+        return profileService.getProfile(username, password);
     }
 
 }
