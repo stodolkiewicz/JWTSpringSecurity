@@ -33,8 +33,8 @@ public class JwtServiceTest {
     @Test
     public void shouldCreateJWTtoken(){
         String token = jwtService.tokenFor(profile);
-        System.out.print(token);
-
+        System.out.print("myToken is: " + token);
+        jwtService.verify(token, "username");
         assertNotNull(token);
     }
 
