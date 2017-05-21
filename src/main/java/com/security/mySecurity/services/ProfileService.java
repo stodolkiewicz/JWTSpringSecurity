@@ -17,9 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Created by Admin on 15/05/2017.
- */
 @Service
 public class ProfileService {
     private List<Profile> profiles = new ArrayList<>();
@@ -42,10 +39,9 @@ public class ProfileService {
         profiles.add(profile);
     }
 
-    public Profile getProfile(String username, String password) {
+    public Profile getProfile(String username) {
         return profiles.stream()
             .filter( profile -> profile.getLogin().getUsername().equals(username) )
-            .filter( profile -> profile.getLogin().getPassword().equals(password))
             .findFirst()
             .orElseThrow(() -> new ProfileNotFoundException(username));
     }

@@ -18,7 +18,7 @@ import static java.time.ZoneOffset.UTC;
 @Service
 public class JwtService {
     //should be encrypted - ex. in database
-    private String secretKey = "dzem44";
+    private byte[] secretKey = "dzem44".getBytes();
 
     @Autowired
     private ProfileService profileService;
@@ -29,15 +29,12 @@ public class JwtService {
             .setSubject(profile.getLogin().getUsername())
             .setExpiration(expirationDate)
             .setIssuer("issuer1")
-            .signWith(SignatureAlgorithm.HS512, secretKey.getBytes())
+            .signWith(SignatureAlgorithm.HS512, secretKey)
             .compact();
     }
 
-    public Profile verify(String token, String username){
-        byte[] secretKeyBytes = secretKey.getBytes();
-        Jws<Claims> claims = Jwts.parser().setSigningKey(secretKeyBytes).parseClaimsJws(token);
-        System.out.print("claims are: " + claims);
-        return profileService.getProfile(
-            claims.getBody().getSubject(), "password" );
+    public Profile verify(String token){
+        Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
+        return profileService.getProfile(claims.getBody().getSubject());
     }
 }

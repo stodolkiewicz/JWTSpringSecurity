@@ -27,14 +27,14 @@ public class JwtServiceTest {
 
     @Before
     public void setup(){
-        profile = profileService.getProfile("username", "password");
+        profile = profileService.getProfile("username");
     }
 
     @Test
     public void shouldCreateJWTtoken(){
         String token = jwtService.tokenFor(profile);
         System.out.print("myToken is: " + token);
-        jwtService.verify(token, "username");
+        jwtService.verify(token);
         assertNotNull(token);
     }
 

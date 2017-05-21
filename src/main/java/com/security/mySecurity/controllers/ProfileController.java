@@ -17,8 +17,8 @@ class ProfileController {
     private ProfileService profileService;
 
     @RequestMapping(path = "/{username}", method = RequestMethod.GET)
-    public Profile getProfile(@PathVariable String username, @RequestParam String password){
-        return profileService.getProfile(username, password);
+    public Profile getProfile(@PathVariable String username){
+        return profileService.getProfile(username);
     }
 
 }

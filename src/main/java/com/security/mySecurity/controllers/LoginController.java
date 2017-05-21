@@ -2,6 +2,7 @@ package com.security.mySecurity.controllers;
 
 import com.security.mySecurity.domain.LoginCredentials;
 import com.security.mySecurity.domain.Profile;
+import com.security.mySecurity.exceptions.FailedToLoginException;
 import com.security.mySecurity.services.JwtService;
 import com.security.mySecurity.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ public class LoginController {
 
     @RequestMapping(method = RequestMethod.POST)
     public Profile login(@RequestBody LoginCredentials loginCredentials,
-                      HttpServletResponse httpServletResponse){
+                      HttpServletResponse httpServletResponse) throws FailedToLoginException {
 
         System.out.print(loginCredentials);
         Profile profile = loginService.login(loginCredentials);
@@ -35,6 +36,5 @@ public class LoginController {
         httpServletResponse.setHeader("Token", token);
 
         return profile;
-
     }
 }
